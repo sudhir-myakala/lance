@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+# Enforce conventional commits format
+commit_regex='^(feat|fix|chore|docs|style|refactor|test|ci|build|perf)(\(.+\))?: .{1,100}'
+if ! grep -qE "$commit_regex" "$1"; then
+  echo "❌ Commit message must follow conventional commits format"
+  echo "   Examples: feat(crm): add client profile page"
+  echo "             fix(auth): resolve JWT expiry bug"
+  exit 1
+fi
